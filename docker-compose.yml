@@ -1,0 +1,39 @@
+services:
+  #資料庫
+  mysql:
+    image: mysql   
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # 設定 MySQL root 用戶的密碼
+      MYSQL_DATABASE: mydb       # 創建一個預設的資料庫
+    ports:
+      - "3307:3306"  # 映射 MySQL 的端口，讓 Flask 可以連接
+    volumes:
+      - mysql_data:/var/lib/mysql  # 使用 Docker volume 存儲 MySQL 資料
+    networks:
+      - app-network
+
+  # 後端
+  flask:
+    build: .  # 在當前目錄中構建 Flask 容器
+    container_name: flask-app
+    environment:
+      - MYSQL_HOST=mysql  # 告訴 Flask 連接的 MySQL 容器名稱
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=mydb
+    ports:
+      - "5000:5000"  # 映射 Flask 的端口
+    volumes:
+      - ./:/app
+    depends_on:
+      - mysql  # 確保 MySQL 容器先啟動
+    networks:
+      - app-network
+    command: tail -f /dev/null  # 不啟動應用，只是保持容器運行
+
+volumes:
+  mysql_data:  # 定義名為 mysql_data 的 Docker volume
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/login.css')}}">
+</head>
+<body>
+    <!-- container -->
+    <div class="container">
+        <!-- login容器 -->
+        <div class="login-wrapper">
+            <!-- login-left-content -->
+            <div class="login-left-content">
+                <div class="login-left-item">
+                    <div class="login-left-logo">
+                        <img src="/static/img/brand-logo.svg" alt="">
+                    </div>
+                    <div class="login-left-info">
+                        <p>智慧連結，掌控未來</p>
+                        <p>讓科技簡化每一天</p>
+                        <p>智慧啟程，精彩不間斷</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 登入畫面 -->
+            <!-- login-right-content -->
+            <div class="login-right-content" id="login-form">
+                <div class="login-right-item">
+                    <form class="login-form" action="{{url_for('login.login_or_register')}}" method="POST">
+                        <div class="login-form-txt">
+                            <h1>歡迎回來!</h1>
+                            <p>繼續使用Google或輸入您的詳細資訊</p>
+                        </div>
+                        <div class="login-with-google">
+                            <a href="#">
+                                <img src="/static/img/icons8-google.svg" alt="#">
+                                <p>Login with Google</p>
+                            </a>
+                        </div>
+                        <div class="login-user-password">
+                            <div class="login-item">
+                                <label for="username">帳號</label>
+                                <input type="text" id="username" name="username" >
+                            </div>
+                            <div class="login-item">
+                                <label for="password">密碼</label>
+                                <input type="password" id="password">
+                            </div>
+                            <div class="login-forget-password">
+                                <a href="#">忘記密碼?</a>
+                            </div>
+                        </div>
+                        <div class="login-button">
+                            <input type="submit" value="登入" name="login">
+                        </div>
+                        <div class="sign-up-link">
+                            <a href="">回首頁</a>
+                            <p>還沒有帳號嗎，<a href="#" id="show-signup">免費註冊</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- 註冊畫面 -->
+            <div class="login-right-content" id="sign-up-form" style="display: none;">
+                <div class="login-right-item">
+                    <form class="login-form" action="{{url_for('login.login_or_register')}}" method="POST">
+                        <div class="login-form-txt">
+                            <h1>創建帳戶!</h1>
+                            <p>註冊以開始使用</p>
+                        </div>
+                        <div class="login-with-google">
+                            <a href="#">
+                                <img src="/static/img/icons8-google.svg" alt="#">
+                                <p>Signup with Google</p>
+                            </a>
+                        </div>
+                        <div class="login-user-password">
+                            <div class="login-item">
+                                <label for="username">帳號</label>
+                                <input type="text" id="sign-up-username" name="sign-up-username" required>
+                            </div>
+                            <div class="login-item">
+                                <label for="password">密碼</label>
+                                <input type="password" id="password" name="sign-up-password" required>
+                            </div>
+                            <div class="login-item">
+                                <label for="password">確認密碼</label>
+                                <input type="password" id="password" name="sign-up-confirm-password" required>
+                            </div>
+                        </div>
+                        <div class="login-button">
+                            <input type="submit" value="註冊" name="register">
+                        </div>
+                        <div class="sign-up-link">
+                            <a href="">回首頁</a>
+                            <p>我已經是會員，<a href="#" id="show-login-form">登入</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='/js/login.js') }}"></script>
+</body>
+</html>

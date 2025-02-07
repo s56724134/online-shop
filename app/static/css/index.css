@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+}
+:root{
+    --main-black: rgb(34, 40, 49);
+    --main-light-black: rgb(57, 62, 70);
+    --main-blue-green: rgb(0, 173, 181);
+    --main-grey: rgb(238, 238, 238);
+}
+/* =================================================== */
+/* 導航欄 */
+/* =================================================== */
+.nav{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;   
+    height: 80px;
+    padding: 1rem 10px;
+    background-color: var(--main-blue-green);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.nav-brand-logo{
+    position: relative;  
+    height: 100%; 
+    width: auto;
+}
+.nav-brand-logo img{
+    position: absolute;
+    margin-left: 3rem;  
+    top: 50%;  /*垂直居中*/
+    left: 50%;  /*水平居中*/
+    transform: translate(0%, -50%);  /*使圖片的中心點對齊容器的中心*/ 
+    height: 150px;  
+    width: auto;
+}
+.nav-search{
+    width: 20vw;
+}
+.nav-features{
+    display: flex;
+    justify-content: space-around;
+    width: 40vw;
+}  
+.nav-features a{
+    color: var(--main-black);
+}
+.nav-features i{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+}
+.nav-features img{
+    height: 100%;
+}
+/* =================================================== */
+/* Hero-section */
+/* =================================================== */
+.hero-section{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: var(--main-light-black);
+    background-image: linear-gradient(
+        120deg, 
+        rgb(0, 173, 181) 0%, 
+        rgb(238, 238, 238) 60%, 
+        rgb(255, 255, 255) 100% 100% 
+    );
+    height: 100vh;
+}
+.hero-section-title{
+    font-weight: 200;
+}
+.hero-section-txt{
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+/* =================================================== */
+/* Product-section */
+/* =================================================== */
+.product-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 3rem;
+    /* height: 100vh; */
+    background-color: var(--main-grey);
+}
+.product-title{
+    margin-bottom: 3rem;
+}
+.product-title p{
+    color: var(--main-light-black);
+    font-size: 3rem;
+    font-weight: bold;
+}
+.product-content{
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+}
+.product-item{
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    margin: 0 2rem;
+    overflow: hidden;
+    cursor: pointer;
+    transform: translateY(0px);
+    transition: .5s;
+}
+.product-item a{
+    display: block;
+    height: 100%;
+}
+.product-item:hover{
+    transform: translateY(-20px);
+}
+.product-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+.product-txt{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(57, 63, 70, .4);
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 3rem;
+    text-align: center;
+}
+.product-txt h2{
+    color: #fff;
+    width: 100%;
+    font-size: 40px;
+}
+.product-txt h2::after{
+    content: "";
+    width: 0%;
+    display: block;
+    margin: .1rem 0;
+    height: 2px;
+    background-color: var(--main-blue-green);
+    transition: width .5s .5s;
+}
+.product-item:hover h2::after{
+    width: 100%;
+}
+.product-txt p{
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+/* =================================================== */
+/* contact-section */
+/* =================================================== */
+.contact-us{
+    margin-top: 3rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.contact-title h2{
+    font-size: 3rem;
+    color: var(--main-light-black);
+}
+.contact-info-wrapper{
+    max-width: 530px;
+    margin: 3rem auto 3rem;
+    display: flex;
+    flex-flow: column;
+}
+.contact-info{
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+.contact-info + .contact-info{
+    margin-top: 2rem;
+}
+.contact-phone{
+    display: flex;
+    align-items: center;
+}
+.contact-phone i{
+    display: block;
+    width: 50px;
+    height: 50px;
+    padding: .7rem;
+    margin-right: .7rem;
+    border-radius: 50%; 
+    background-color: var(--main-blue-green);
+} 
+.contact-phone img{
+    width: 100%;
+    vertical-align: middle;
+}
+/* =================================================== */
+/* footer-section */
+/* =================================================== */
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-black);
+}
+.footer-content{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.footer-content p{
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #fff;
+}
