@@ -37,5 +37,68 @@ Features under development:
 - **Container Management**: Docker, Docker Compose
 - **Version Control**: Git / GitHub
 
+## ⚙️ Installation & Setup
+
+### **Prerequisites**
+Ensure that Docker and Docker Compose are installed on your system:
+- **Windows & macOS**  
+    - Install [Docker Desktop](https://www.docker.com/)  
+    - Docker Compose is included in Docker Desktop, no additional installation is needed.
+
+- **Linux**  
+    - Install [Docker](https://docs.docker.com/engine/install/)  
+    - If Docker Compose is not included, install it manually:  
+
+      ```sh
+      sudo apt-get install docker-compose -y  # Ubuntu/Debian
+      ```
+### **1️⃣ Clone the repository**
+```sh
+git clone https://github.com/s56724134/online-shop.git
+cd online-shop
+```
+
+### **2️⃣ Build and start the project**
+```sh
+docker-compose up --build -d
+```
+
+### **3️⃣ Verify that the services are running**
+Check the running containers:
+```sh
+docker ps
+```
+If everything is working properly, you should see output similar to this:
+```sh
+CONTAINER ID   IMAGE           STATUS         PORTS                   NAMES
+123456789abc   barney_flask    Up 10 minutes  0.0.0.0:5000->5000/tcp  flask-app
+987654321xyz   mysql:latest    Up 10 minutes  3306/tcp                mysql
+```
+
+### **4️⃣ Access the application**
+Once you have the flask container ID, use the following command to enter the container:
+```sh
+# Please replace <flask-container-id> with the actual Flask container ID. You can find the ID by running `docker ps`.
+docker exec -it <flask-container-id> bash
+```
+Once inside the container, you should see a prompt like:
+```sh
+root@221e419488c9:/app# 
+```
+Now, you can run the application by executing:
+```sh
+python main.py
+```
+
+### **5️⃣ Stop the application**
+To stop all running containers:
+```sh
+docker-compose down
+```
+
+
+               
+
+
 
 
